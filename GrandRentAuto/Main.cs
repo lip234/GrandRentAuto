@@ -30,5 +30,11 @@ namespace GrandRentAuto
                       
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form emplyeeForm = new EmployeeForm();
+            emplyeeForm.ShowDialog();
+        }
     }
 }

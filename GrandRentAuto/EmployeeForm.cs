@@ -10,36 +10,31 @@ using System.Windows.Forms;
 
 namespace GrandRentAuto
 {
-    public partial class CarForm : Form
+    public partial class EmployeeForm : Form
     {
-        public CarForm()
+        public EmployeeForm()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void EmployeeForm_Load(object sender, EventArgs e)
         {
-            panelAdd.Visible = true;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panelAdd.Visible = false;
+            panel1.Visible = true;
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            panel1.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not Implemented");
-        }
-
-        private void CarForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
