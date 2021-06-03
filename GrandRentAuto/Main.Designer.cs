@@ -37,7 +37,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(155, 209);
+            this.button1.Location = new System.Drawing.Point(447, 189);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(239, 72);
             this.button1.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(534, 209);
+            this.button2.Location = new System.Drawing.Point(86, 504);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(239, 72);
             this.button2.TabIndex = 1;
@@ -57,30 +57,33 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(918, 209);
+            this.button3.Location = new System.Drawing.Point(86, 357);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(239, 72);
             this.button3.TabIndex = 2;
             this.button3.Text = "Manage Customers";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(155, 351);
+            this.button4.Location = new System.Drawing.Point(447, 357);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(239, 72);
             this.button4.TabIndex = 3;
             this.button4.Text = "Manage Branches";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(155, 56);
+            this.button5.Location = new System.Drawing.Point(86, 189);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(239, 72);
             this.button5.TabIndex = 4;
-            this.button5.Text = "Make a Reservation";
+            this.button5.Text = "Manage Reservations";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Main
             // 
