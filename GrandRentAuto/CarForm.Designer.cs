@@ -29,33 +29,32 @@ namespace GrandRentAuto
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewCars = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.plat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StoredAt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mileage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.filterBycomboBox = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilterBy = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.panelAdd = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.textBoxMilage = new System.Windows.Forms.TextBox();
+            this.comboBoxTypes = new System.Windows.Forms.ComboBox();
             this.comboBoxStoredAt = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textboxPlate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.newCarSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.listView_types = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,40 +64,41 @@ namespace GrandRentAuto
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox_changeFee = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox_dailyRate = new System.Windows.Forms.TextBox();
+            this.textBox_weeklyRate = new System.Windows.Forms.TextBox();
+            this.textBox_monthlyRate = new System.Windows.Forms.TextBox();
+            this.textBox_typeDesc = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSaveType = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.panelAdd.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewCars
             // 
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewCars.CheckBoxes = true;
+            this.listViewCars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id,
             this.plat,
             this.StoredAt,
             this.Type,
             this.Mileage,
             this.Status});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(162, 111);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(644, 452);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listViewCars.HideSelection = false;
+            this.listViewCars.Location = new System.Drawing.Point(162, 111);
+            this.listViewCars.MultiSelect = false;
+            this.listViewCars.Name = "listViewCars";
+            this.listViewCars.Size = new System.Drawing.Size(644, 452);
+            this.listViewCars.TabIndex = 0;
+            this.listViewCars.UseCompatibleStateImageBehavior = false;
+            this.listViewCars.View = System.Windows.Forms.View.Details;
+            this.listViewCars.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewCars_MouseClick);
             // 
             // id
             // 
@@ -132,19 +132,20 @@ namespace GrandRentAuto
             // 
             this.Status.Text = "Status";
             this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Status.Width = 65;
             // 
-            // filterBycomboBox
+            // comboBoxFilterBy
             // 
-            this.filterBycomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterBycomboBox.FormattingEnabled = true;
-            this.filterBycomboBox.Items.AddRange(new object[] {
-            "Branch",
+            this.comboBoxFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFilterBy.FormattingEnabled = true;
+            this.comboBoxFilterBy.Items.AddRange(new object[] {
+            "Branch Name",
             "City",
             "Type"});
-            this.filterBycomboBox.Location = new System.Drawing.Point(242, 49);
-            this.filterBycomboBox.Name = "filterBycomboBox";
-            this.filterBycomboBox.Size = new System.Drawing.Size(191, 28);
-            this.filterBycomboBox.TabIndex = 2;
+            this.comboBoxFilterBy.Location = new System.Drawing.Point(242, 49);
+            this.comboBoxFilterBy.Name = "comboBoxFilterBy";
+            this.comboBoxFilterBy.Size = new System.Drawing.Size(191, 28);
+            this.comboBoxFilterBy.TabIndex = 2;
             // 
             // btnDelete
             // 
@@ -174,24 +175,24 @@ namespace GrandRentAuto
             this.label1.TabIndex = 5;
             this.label1.Text = "Filter By";
             // 
-            // textBox1
+            // textBoxFilter
             // 
-            this.textBox1.Location = new System.Drawing.Point(501, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(326, 26);
-            this.textBox1.TabIndex = 6;
+            this.textBoxFilter.Location = new System.Drawing.Point(480, 49);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(326, 26);
+            this.textBoxFilter.TabIndex = 6;
             // 
             // panelAdd
             // 
-            this.panelAdd.Controls.Add(this.textBox3);
-            this.panelAdd.Controls.Add(this.comboBoxType);
+            this.panelAdd.Controls.Add(this.textBoxMilage);
+            this.panelAdd.Controls.Add(this.comboBoxTypes);
             this.panelAdd.Controls.Add(this.comboBoxStoredAt);
-            this.panelAdd.Controls.Add(this.textBox2);
+            this.panelAdd.Controls.Add(this.textboxPlate);
             this.panelAdd.Controls.Add(this.label3);
             this.panelAdd.Controls.Add(this.label6);
             this.panelAdd.Controls.Add(this.label5);
             this.panelAdd.Controls.Add(this.label2);
-            this.panelAdd.Controls.Add(this.button2);
+            this.panelAdd.Controls.Add(this.newCarSave);
             this.panelAdd.Controls.Add(this.button1);
             this.panelAdd.Location = new System.Drawing.Point(869, 111);
             this.panelAdd.Name = "panelAdd";
@@ -199,20 +200,20 @@ namespace GrandRentAuto
             this.panelAdd.TabIndex = 7;
             this.panelAdd.Visible = false;
             // 
-            // textBox3
+            // textBoxMilage
             // 
-            this.textBox3.Location = new System.Drawing.Point(299, 213);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(215, 26);
-            this.textBox3.TabIndex = 11;
+            this.textBoxMilage.Location = new System.Drawing.Point(299, 207);
+            this.textBoxMilage.Name = "textBoxMilage";
+            this.textBoxMilage.Size = new System.Drawing.Size(215, 26);
+            this.textBoxMilage.TabIndex = 11;
             // 
-            // comboBoxType
+            // comboBoxTypes
             // 
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(299, 157);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(215, 28);
-            this.comboBoxType.TabIndex = 10;
+            this.comboBoxTypes.FormattingEnabled = true;
+            this.comboBoxTypes.Location = new System.Drawing.Point(299, 157);
+            this.comboBoxTypes.Name = "comboBoxTypes";
+            this.comboBoxTypes.Size = new System.Drawing.Size(215, 28);
+            this.comboBoxTypes.TabIndex = 10;
             // 
             // comboBoxStoredAt
             // 
@@ -222,12 +223,12 @@ namespace GrandRentAuto
             this.comboBoxStoredAt.Size = new System.Drawing.Size(215, 28);
             this.comboBoxStoredAt.TabIndex = 9;
             // 
-            // textBox2
+            // textboxPlate
             // 
-            this.textBox2.Location = new System.Drawing.Point(299, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 26);
-            this.textBox2.TabIndex = 8;
+            this.textboxPlate.Location = new System.Drawing.Point(299, 48);
+            this.textboxPlate.Name = "textboxPlate";
+            this.textboxPlate.Size = new System.Drawing.Size(215, 26);
+            this.textboxPlate.TabIndex = 8;
             // 
             // label3
             // 
@@ -265,15 +266,15 @@ namespace GrandRentAuto
             this.label2.TabIndex = 2;
             this.label2.Text = "Plate Number";
             // 
-            // button2
+            // newCarSave
             // 
-            this.button2.Location = new System.Drawing.Point(333, 363);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 65);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.newCarSave.Location = new System.Drawing.Point(333, 363);
+            this.newCarSave.Name = "newCarSave";
+            this.newCarSave.Size = new System.Drawing.Size(200, 65);
+            this.newCarSave.TabIndex = 1;
+            this.newCarSave.Text = "Save";
+            this.newCarSave.UseVisualStyleBackColor = true;
+            this.newCarSave.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -304,56 +305,58 @@ namespace GrandRentAuto
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // listView_types
             // 
-            this.listView2.CheckBoxes = true;
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_types.CheckBoxes = true;
+            this.listView_types.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(162, 681);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(644, 299);
-            this.listView2.TabIndex = 8;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView_types.HideSelection = false;
+            this.listView_types.Location = new System.Drawing.Point(162, 681);
+            this.listView_types.Name = "listView_types";
+            this.listView_types.Size = new System.Drawing.Size(644, 299);
+            this.listView_types.TabIndex = 8;
+            this.listView_types.UseCompatibleStateImageBehavior = false;
+            this.listView_types.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 40;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Plate Number";
+            this.columnHeader2.Text = "Desc";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 120;
+            this.columnHeader2.Width = 80;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Branch";
+            this.columnHeader3.Text = "Daily Rate";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 120;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Type";
+            this.columnHeader4.Text = "Weekly Rate";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 80;
+            this.columnHeader4.Width = 120;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Mileage";
+            this.columnHeader5.Text = "Monthly Rate";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader5.Width = 80;
+            this.columnHeader5.Width = 120;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Status";
+            this.columnHeader6.Text = "Change Branch Fee";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 160;
             // 
             // label4
             // 
@@ -375,17 +378,17 @@ namespace GrandRentAuto
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.textBox_changeFee);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.textBox_dailyRate);
+            this.panel1.Controls.Add(this.textBox_weeklyRate);
+            this.panel1.Controls.Add(this.textBox_monthlyRate);
+            this.panel1.Controls.Add(this.textBox_typeDesc);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.btnSaveType);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Location = new System.Drawing.Point(869, 685);
             this.panel1.Name = "panel1";
@@ -393,19 +396,53 @@ namespace GrandRentAuto
             this.panel1.TabIndex = 13;
             this.panel1.Visible = false;
             // 
-            // textBox4
+            // textBox_changeFee
             // 
-            this.textBox4.Location = new System.Drawing.Point(299, 199);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(215, 26);
-            this.textBox4.TabIndex = 11;
+            this.textBox_changeFee.Location = new System.Drawing.Point(299, 251);
+            this.textBox_changeFee.Name = "textBox_changeFee";
+            this.textBox_changeFee.Size = new System.Drawing.Size(215, 26);
+            this.textBox_changeFee.TabIndex = 15;
+            this.textBox_changeFee.Leave += new System.EventHandler(this.amountBox_Leave);
             // 
-            // textBox5
+            // label12
             // 
-            this.textBox5.Location = new System.Drawing.Point(299, 48);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(215, 26);
-            this.textBox5.TabIndex = 8;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(99, 254);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(152, 20);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Change Branch Fee";
+            // 
+            // textBox_dailyRate
+            // 
+            this.textBox_dailyRate.Location = new System.Drawing.Point(299, 103);
+            this.textBox_dailyRate.Name = "textBox_dailyRate";
+            this.textBox_dailyRate.Size = new System.Drawing.Size(215, 26);
+            this.textBox_dailyRate.TabIndex = 13;
+            this.textBox_dailyRate.Leave += new System.EventHandler(this.amountBox_Leave);
+            // 
+            // textBox_weeklyRate
+            // 
+            this.textBox_weeklyRate.Location = new System.Drawing.Point(299, 154);
+            this.textBox_weeklyRate.Name = "textBox_weeklyRate";
+            this.textBox_weeklyRate.Size = new System.Drawing.Size(215, 26);
+            this.textBox_weeklyRate.TabIndex = 12;
+            this.textBox_weeklyRate.Leave += new System.EventHandler(this.amountBox_Leave);
+            // 
+            // textBox_monthlyRate
+            // 
+            this.textBox_monthlyRate.Location = new System.Drawing.Point(299, 199);
+            this.textBox_monthlyRate.Name = "textBox_monthlyRate";
+            this.textBox_monthlyRate.Size = new System.Drawing.Size(215, 26);
+            this.textBox_monthlyRate.TabIndex = 11;
+            this.textBox_monthlyRate.Leave += new System.EventHandler(this.amountBox_Leave);
+            // 
+            // textBox_typeDesc
+            // 
+            this.textBox_typeDesc.Location = new System.Drawing.Point(299, 48);
+            this.textBox_typeDesc.Name = "textBox_typeDesc";
+            this.textBox_typeDesc.Size = new System.Drawing.Size(215, 26);
+            this.textBox_typeDesc.TabIndex = 8;
             // 
             // label8
             // 
@@ -443,14 +480,15 @@ namespace GrandRentAuto
             this.label11.TabIndex = 2;
             this.label11.Text = "Description";
             // 
-            // button5
+            // btnSaveType
             // 
-            this.button5.Location = new System.Drawing.Point(333, 320);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 65);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Save";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSaveType.Location = new System.Drawing.Point(333, 320);
+            this.btnSaveType.Name = "btnSaveType";
+            this.btnSaveType.Size = new System.Drawing.Size(200, 65);
+            this.btnSaveType.TabIndex = 1;
+            this.btnSaveType.Text = "Save";
+            this.btnSaveType.UseVisualStyleBackColor = true;
+            this.btnSaveType.Click += new System.EventHandler(this.btnSaveType_Click);
             // 
             // button6
             // 
@@ -462,36 +500,6 @@ namespace GrandRentAuto
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(299, 154);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(215, 26);
-            this.textBox6.TabIndex = 12;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(299, 103);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(215, 26);
-            this.textBox7.TabIndex = 13;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(99, 254);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(152, 20);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Change Branch Fee";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(299, 251);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(215, 26);
-            this.textBox8.TabIndex = 15;
-            // 
             // CarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -502,14 +510,14 @@ namespace GrandRentAuto
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.listView_types);
             this.Controls.Add(this.panelAdd);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxFilter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.filterBycomboBox);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.comboBoxFilterBy);
+            this.Controls.Add(this.listViewCars);
             this.Name = "CarForm";
             this.Text = "CarForm";
             this.Load += new System.EventHandler(this.CarForm_Load);
@@ -524,24 +532,23 @@ namespace GrandRentAuto
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ComboBox filterBycomboBox;
+        private System.Windows.Forms.ListView listViewCars;
+        private System.Windows.Forms.ComboBox comboBoxFilterBy;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.Panel panelAdd;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.Button newCarSave;
+        private System.Windows.Forms.ComboBox comboBoxTypes;
         private System.Windows.Forms.ComboBox comboBoxStoredAt;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textboxPlate;
+        private System.Windows.Forms.TextBox textBoxMilage;
         private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader plat;
         private System.Windows.Forms.ColumnHeader StoredAt;
@@ -550,7 +557,7 @@ namespace GrandRentAuto
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView listView_types;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -560,17 +567,17 @@ namespace GrandRentAuto
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox_changeFee;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox_dailyRate;
+        private System.Windows.Forms.TextBox textBox_weeklyRate;
+        private System.Windows.Forms.TextBox textBox_monthlyRate;
+        private System.Windows.Forms.TextBox textBox_typeDesc;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSaveType;
         private System.Windows.Forms.Button button6;
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace GrandRentAuto
 {
@@ -17,11 +19,6 @@ namespace GrandRentAuto
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -52,6 +49,16 @@ namespace GrandRentAuto
         {
             Form form = new ReservationForm();
             form.ShowDialog();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DBUtil.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

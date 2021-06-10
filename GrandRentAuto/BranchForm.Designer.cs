@@ -35,22 +35,22 @@ namespace GrandRentAuto
             this.address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.city1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.province1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxPostalCode = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxProvince = new System.Windows.Forms.TextBox();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.postal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@ namespace GrandRentAuto
             this.province1,
             this.postal});
             this.listViewBranch.HideSelection = false;
-            this.listViewBranch.Location = new System.Drawing.Point(79, 64);
+            this.listViewBranch.Location = new System.Drawing.Point(30, 39);
             this.listViewBranch.Name = "listViewBranch";
             this.listViewBranch.Size = new System.Drawing.Size(550, 737);
             this.listViewBranch.TabIndex = 1;
@@ -99,15 +99,20 @@ namespace GrandRentAuto
             this.province1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.province1.Width = 80;
             // 
+            // postal
+            // 
+            this.postal.Text = "Postal Code";
+            this.postal.Width = 120;
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.textBoxPostalCode);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxProvince);
+            this.panel1.Controls.Add(this.textBoxCity);
+            this.panel1.Controls.Add(this.textBoxAddress);
+            this.panel1.Controls.Add(this.textBoxName);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -119,6 +124,13 @@ namespace GrandRentAuto
             this.panel1.TabIndex = 4;
             this.panel1.Visible = false;
             // 
+            // textBoxPostalCode
+            // 
+            this.textBoxPostalCode.Location = new System.Drawing.Point(166, 266);
+            this.textBoxPostalCode.Name = "textBoxPostalCode";
+            this.textBoxPostalCode.Size = new System.Drawing.Size(166, 26);
+            this.textBoxPostalCode.TabIndex = 12;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(208, 394);
@@ -127,6 +139,7 @@ namespace GrandRentAuto
             this.button4.TabIndex = 11;
             this.button4.Text = "Save";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -136,34 +149,35 @@ namespace GrandRentAuto
             this.button3.TabIndex = 10;
             this.button3.Text = "Discard";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox4
+            // textBoxProvince
             // 
-            this.textBox4.Location = new System.Drawing.Point(166, 210);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(166, 26);
-            this.textBox4.TabIndex = 8;
+            this.textBoxProvince.Location = new System.Drawing.Point(166, 210);
+            this.textBoxProvince.Name = "textBoxProvince";
+            this.textBoxProvince.Size = new System.Drawing.Size(166, 26);
+            this.textBoxProvince.TabIndex = 8;
             // 
-            // textBox3
+            // textBoxCity
             // 
-            this.textBox3.Location = new System.Drawing.Point(166, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(166, 26);
-            this.textBox3.TabIndex = 7;
+            this.textBoxCity.Location = new System.Drawing.Point(166, 157);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(166, 26);
+            this.textBoxCity.TabIndex = 7;
             // 
-            // textBox2
+            // textBoxAddress
             // 
-            this.textBox2.Location = new System.Drawing.Point(166, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 26);
-            this.textBox2.TabIndex = 6;
+            this.textBoxAddress.Location = new System.Drawing.Point(166, 100);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(166, 26);
+            this.textBoxAddress.TabIndex = 6;
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(166, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 26);
-            this.textBox1.TabIndex = 5;
+            this.textBoxName.Location = new System.Drawing.Point(166, 35);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(166, 26);
+            this.textBoxName.TabIndex = 5;
             // 
             // label5
             // 
@@ -213,13 +227,6 @@ namespace GrandRentAuto
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(166, 266);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(166, 26);
-            this.textBox5.TabIndex = 12;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(79, 881);
@@ -228,6 +235,7 @@ namespace GrandRentAuto
             this.button2.TabIndex = 6;
             this.button2.Text = "Delete";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -237,11 +245,7 @@ namespace GrandRentAuto
             this.button1.TabIndex = 5;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // postal
-            // 
-            this.postal.Text = "Postal Code";
-            this.postal.Width = 120;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BranchForm
             // 
@@ -254,6 +258,7 @@ namespace GrandRentAuto
             this.Controls.Add(this.listViewBranch);
             this.Name = "BranchForm";
             this.Text = "BranchForm";
+            this.Load += new System.EventHandler(this.BranchForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -271,16 +276,16 @@ namespace GrandRentAuto
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxProvince;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.TextBox textBoxAddress;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxPostalCode;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ColumnHeader postal;
