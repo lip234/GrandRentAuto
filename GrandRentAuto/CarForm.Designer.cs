@@ -90,6 +90,7 @@ namespace GrandRentAuto
             this.Type,
             this.Mileage,
             this.Status});
+            this.listViewCars.FullRowSelect = true;
             this.listViewCars.HideSelection = false;
             this.listViewCars.Location = new System.Drawing.Point(162, 111);
             this.listViewCars.MultiSelect = false;
@@ -315,6 +316,7 @@ namespace GrandRentAuto
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listView_types.FullRowSelect = true;
             this.listView_types.HideSelection = false;
             this.listView_types.Location = new System.Drawing.Point(162, 681);
             this.listView_types.Name = "listView_types";

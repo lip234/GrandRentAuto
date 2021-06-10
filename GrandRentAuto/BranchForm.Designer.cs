@@ -63,6 +63,7 @@ namespace GrandRentAuto
             this.city1,
             this.province1,
             this.postal});
+            this.listViewBranch.FullRowSelect = true;
             this.listViewBranch.HideSelection = false;
             this.listViewBranch.Location = new System.Drawing.Point(30, 39);
             this.listViewBranch.Name = "listViewBranch";
