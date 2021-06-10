@@ -99,12 +99,11 @@ namespace GrandRentAuto
             string branchName = selectedBranch.SubItems[1].Text;
             int branchID = Int32.Parse(selectedBranch.SubItems[0].Text);
 
-
             // Check employees
             string sql = "SELECT EmployeeID FROM Employees WHERE WorksAt=@branch";
             using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
             {
-                cmd.Parameters.Add("@param", SqlDbType.Int).Value = branchID;
+                cmd.Parameters.Add("@branch", SqlDbType.Int).Value = branchID;
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -119,25 +118,24 @@ namespace GrandRentAuto
             sql = "SELECT CarID from Cars WHERE StoredBranch=@branch";
             using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
             {
-                cmd.Parameters.Add("@param", SqlDbType.Int).Value = branchID;
+                cmd.Parameters.Add("@branch", SqlDbType.Int).Value = branchID;
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.HasRows)
                     {
-                        MessageBox.Show("They are cars stored at this branch! ");
+                        MessageBox.Show("They are cars stored at this branch!");
                         return;
                     }
                 }
             }
 
-
             DialogResult result = MessageBox.Show("Are you sure you want to delete branch " + branchName + "?",
                                                     "Delete?", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes )
             {
-                sql = "DELETE branches where BranchID = @param";
+                sql = "DELETE branches where BranchID = @branch";
                 using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection())) {
-                    cmd.Parameters.Add("@param", SqlDbType.Int).Value = branchID;
+                    cmd.Parameters.Add("@branch", SqlDbType.Int).Value = branchID;
                     cmd.ExecuteNonQuery();
                 }
             }

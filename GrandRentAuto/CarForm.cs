@@ -54,8 +54,8 @@ namespace GrandRentAuto
                 // Hard-coded for now
                 cmd.Parameters.Add("@status", SqlDbType.NVarChar).Value = "availabe";
                 cmd.ExecuteNonQuery();
-
             }
+
             MessageBox.Show("Success!");
             LoadCarListView();
             textboxPlate.Clear();
