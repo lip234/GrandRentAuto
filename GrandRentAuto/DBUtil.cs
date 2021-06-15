@@ -47,14 +47,38 @@ namespace GrandRentAuto
                 view.Items.Add(item);
             }
         }
-
         public static void PopulateCombobox(SqlDataReader reader, ComboBox box)
         {
-            box.Items.Clear();
+            PopulateCombobox(reader, box, true);
+        }
+        public static void PopulateCombobox(SqlDataReader reader, ComboBox box, bool clearItems)
+        {
+            if (clearItems)
+            {
+                box.Items.Clear();
+            }
             while (reader.Read())
             {
                 box.Items.Add(reader[0].ToString());
             }
         }
+        public static void PopulateComboxBoxSQL(string sql, ComboBox box)
+        {
+            PopulateComboxBoxSQL(sql, box, true);
+        }
+
+        public static void PopulateComboxBoxSQL(string sql, ComboBox box, bool clearItems)
+        {
+
+            using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PopulateCombobox(reader, box, clearItems);
+                }
+            }
+        }        
+        
+
     }
 }

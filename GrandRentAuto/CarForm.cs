@@ -13,8 +13,11 @@ namespace GrandRentAuto
 {
     public partial class CarForm : Form
     {
-        public CarForm()
+        private Form mainMenu;
+
+        public CarForm(Form mainMenu)
         {
+            this.mainMenu = mainMenu;
             InitializeComponent();
         }
 
@@ -70,7 +73,6 @@ namespace GrandRentAuto
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             panel1.Visible = true;
         }
 

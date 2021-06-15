@@ -14,15 +14,30 @@ namespace GrandRentAuto
 {
     public partial class Main : Form
     {
+        private int employeeID { get; set; }
+        private string employeeName { get; set; }
+        private int branchId { get; set; }
+        private string branchName { get; set; }
+
+
         public Main()
         {
+            InitializeComponent();
+        }
+        public Main(int employeeID, string employeeName, int branchID, string BranchName)
+        {
+            this.employeeID = employeeID;
+            this.employeeName = employeeName;
+            this.branchId = branchID;
+            this.branchName = branchName;
+
             InitializeComponent();
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form carForm = new CarForm();
+            Form carForm = new CarForm(this);
             carForm.ShowDialog();            
         }
 
@@ -56,9 +71,15 @@ namespace GrandRentAuto
             DBUtil.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            
+            label1.Text = "Logged in as " + this.employeeName + " at branch " + this.branchName;
+        }
+
+        private void buttonReport_Click(object sender, EventArgs e)
+        {
+            Form form = new ReportForm();
+            form.ShowDialog();
         }
     }
 }
