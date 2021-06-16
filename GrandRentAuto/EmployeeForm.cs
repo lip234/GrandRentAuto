@@ -108,7 +108,7 @@ namespace GrandRentAuto
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (listViewEmployee.SelectedItems == null)
+            if (listViewEmployee.SelectedItems.Count == 0)
             {
                 return;
             }

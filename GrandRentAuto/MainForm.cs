@@ -26,7 +26,7 @@ namespace GrandRentAuto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form carForm = new CarForm(this);
+            Form carForm = new CarForm();
             carForm.ShowDialog();            
         }
 

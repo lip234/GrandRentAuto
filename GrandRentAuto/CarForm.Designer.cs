@@ -42,6 +42,8 @@ namespace GrandRentAuto
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.panelAdd = new System.Windows.Forms.Panel();
+            this.textBoxStatus = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.textBoxMilage = new System.Windows.Forms.TextBox();
             this.comboBoxTypes = new System.Windows.Forms.ComboBox();
             this.comboBoxStoredAt = new System.Windows.Forms.ComboBox();
@@ -76,6 +78,8 @@ namespace GrandRentAuto
             this.label11 = new System.Windows.Forms.Label();
             this.btnSaveType = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.buttonEditCar = new System.Windows.Forms.Button();
+            this.buttonEditCarType = new System.Windows.Forms.Button();
             this.panelAdd.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +103,6 @@ namespace GrandRentAuto
             this.listViewCars.TabIndex = 0;
             this.listViewCars.UseCompatibleStateImageBehavior = false;
             this.listViewCars.View = System.Windows.Forms.View.Details;
-            this.listViewCars.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewCars_MouseClick);
             // 
             // id
             // 
@@ -152,16 +155,17 @@ namespace GrandRentAuto
             // 
             this.btnDelete.Location = new System.Drawing.Point(162, 587);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(218, 62);
+            this.btnDelete.Size = new System.Drawing.Size(154, 62);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(588, 587);
+            this.btnAdd.Location = new System.Drawing.Point(652, 587);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(218, 62);
+            this.btnAdd.Size = new System.Drawing.Size(154, 62);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -185,6 +189,8 @@ namespace GrandRentAuto
             // 
             // panelAdd
             // 
+            this.panelAdd.Controls.Add(this.textBoxStatus);
+            this.panelAdd.Controls.Add(this.label13);
             this.panelAdd.Controls.Add(this.textBoxMilage);
             this.panelAdd.Controls.Add(this.comboBoxTypes);
             this.panelAdd.Controls.Add(this.comboBoxStoredAt);
@@ -200,6 +206,23 @@ namespace GrandRentAuto
             this.panelAdd.Size = new System.Drawing.Size(577, 452);
             this.panelAdd.TabIndex = 7;
             this.panelAdd.Visible = false;
+            // 
+            // textBoxStatus
+            // 
+            this.textBoxStatus.Location = new System.Drawing.Point(299, 266);
+            this.textBoxStatus.Name = "textBoxStatus";
+            this.textBoxStatus.Size = new System.Drawing.Size(215, 26);
+            this.textBoxStatus.TabIndex = 13;
+            this.textBoxStatus.Text = "available";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(99, 266);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 20);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Status";
             // 
             // textBoxMilage
             // 
@@ -289,9 +312,9 @@ namespace GrandRentAuto
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(588, 1023);
+            this.button3.Location = new System.Drawing.Point(652, 1023);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(218, 62);
+            this.button3.Size = new System.Drawing.Size(154, 62);
             this.button3.TabIndex = 10;
             this.button3.Text = "Add";
             this.button3.UseVisualStyleBackColor = true;
@@ -301,10 +324,11 @@ namespace GrandRentAuto
             // 
             this.button4.Location = new System.Drawing.Point(162, 1023);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(218, 62);
+            this.button4.Size = new System.Drawing.Size(154, 62);
             this.button4.TabIndex = 9;
             this.button4.Text = "Delete";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // listView_types
             // 
@@ -319,6 +343,7 @@ namespace GrandRentAuto
             this.listView_types.FullRowSelect = true;
             this.listView_types.HideSelection = false;
             this.listView_types.Location = new System.Drawing.Point(162, 681);
+            this.listView_types.MultiSelect = false;
             this.listView_types.Name = "listView_types";
             this.listView_types.Size = new System.Drawing.Size(644, 299);
             this.listView_types.TabIndex = 8;
@@ -502,11 +527,33 @@ namespace GrandRentAuto
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // buttonEditCar
+            // 
+            this.buttonEditCar.Location = new System.Drawing.Point(412, 587);
+            this.buttonEditCar.Name = "buttonEditCar";
+            this.buttonEditCar.Size = new System.Drawing.Size(154, 62);
+            this.buttonEditCar.TabIndex = 14;
+            this.buttonEditCar.Text = "Edit";
+            this.buttonEditCar.UseVisualStyleBackColor = true;
+            this.buttonEditCar.Click += new System.EventHandler(this.buttonEditCar_Click);
+            // 
+            // buttonEditCarType
+            // 
+            this.buttonEditCarType.Location = new System.Drawing.Point(412, 1023);
+            this.buttonEditCarType.Name = "buttonEditCarType";
+            this.buttonEditCarType.Size = new System.Drawing.Size(154, 62);
+            this.buttonEditCarType.TabIndex = 15;
+            this.buttonEditCarType.Text = "Edit";
+            this.buttonEditCarType.UseVisualStyleBackColor = true;
+            this.buttonEditCarType.Click += new System.EventHandler(this.buttonEditCarType_Click);
+            // 
             // CarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1522, 1347);
+            this.Controls.Add(this.buttonEditCarType);
+            this.Controls.Add(this.buttonEditCar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
@@ -581,5 +628,9 @@ namespace GrandRentAuto
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnSaveType;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonEditCar;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxStatus;
+        private System.Windows.Forms.Button buttonEditCarType;
     }
 }

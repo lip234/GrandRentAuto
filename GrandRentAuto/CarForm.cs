@@ -13,11 +13,12 @@ namespace GrandRentAuto
 {
     public partial class CarForm : Form
     {
-        private Form mainMenu;
 
-        public CarForm(Form mainMenu)
+        private bool editingType = false, editingCar = false;
+        private int carId, typeID;
+
+        public CarForm()
         {
-            this.mainMenu = mainMenu;
             InitializeComponent();
         }
 
@@ -30,9 +31,19 @@ namespace GrandRentAuto
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ClearCarPanel();
             panelAdd.Visible = false;
         }
 
+        private void ClearCarPanel()
+        {
+            editingCar = false;
+            textboxPlate.Clear();
+            textBoxMilage.Clear();
+            textBoxStatus.Text = "available";
+            LoadBranchComboBox();
+            LoadTypeCombobox();
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -42,27 +53,41 @@ namespace GrandRentAuto
                 MessageBox.Show("Mileage must be an integer!");
                 return;
             }
-
-            string sql = "Insert into Cars (PlateNumber, StoredBranch, Type, Mileage, Status) " +
-                 "Values (@plate, " +
-                 "(SELECT BranchID FROM Branches WHERE Name = @branch)," +
-                 "(SELECT TypeID from CarTypes where Description = @type)," +
-                 "@mileage, @status)";
+            string sql;
+            if (editingCar)
+            {
+                sql = "UPDATE Cars SET PlateNumber=@plate, " +
+                    "StoredBranch=(SELECT BranchID FROM Branches WHERE Name = @branch)," +
+                    "Type=(SELECT TypeID from CarTypes where Description = @type)," +
+                    "Mileage=@mileage, " +
+                    "Status=@status WHERE CarID=@carid";
+            }
+            else
+            {
+                sql = "Insert into Cars (PlateNumber, StoredBranch, Type, Mileage, Status) " +
+                     "Values (@plate, " +
+                     "(SELECT BranchID FROM Branches WHERE Name = @branch)," +
+                     "(SELECT TypeID from CarTypes where Description = @type)," +
+                     "@mileage, @status)";
+            }
             using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
             {
                 cmd.Parameters.Add("@plate", SqlDbType.NVarChar).Value = textboxPlate.Text;
                 cmd.Parameters.Add("@branch", SqlDbType.NVarChar).Value = (string)comboBoxStoredAt.SelectedItem;
                 cmd.Parameters.Add("@type", SqlDbType.NVarChar).Value = (string)comboBoxTypes.SelectedItem;
                 cmd.Parameters.Add("@mileage", SqlDbType.Int).Value = mileage;
-                // Hard-coded for now
-                cmd.Parameters.Add("@status", SqlDbType.NVarChar).Value = "availabe";
+                cmd.Parameters.Add("@status", SqlDbType.NVarChar).Value = textBoxStatus.Text;
+                if (editingCar)
+                {
+                    cmd.Parameters.Add("@carid", SqlDbType.Int).Value = carId;
+                }
                 cmd.ExecuteNonQuery();
             }
 
             MessageBox.Show("Success!");
             LoadCarListView();
-            textboxPlate.Clear();
-            textBoxMilage.Clear();
+            ClearCarPanel();
+            panelAdd.Visible = false;
         }
 
         private void CarForm_Load(object sender, EventArgs e)
@@ -71,6 +96,15 @@ namespace GrandRentAuto
             LoadCarListView();
         }
 
+        private void CLearTypePanel()
+        {
+            textBox_typeDesc.Clear();
+            textBox_dailyRate.Clear();
+            textBox_weeklyRate.Clear();
+            textBox_monthlyRate.Clear();
+            textBox_changeFee.Clear();
+            editingType = false;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
@@ -112,10 +146,19 @@ namespace GrandRentAuto
                 MessageBox.Show("Invalid monthly rate!");
                 return;
             }
-
-            string sql = "INSERT INTO CarTypes " +
-                "(Description, RateDaily, RateWeekly, RateMonthly, ChangeBranchFee)" +
-                "VALUES (@desc, @daily,@weekly,@monthly,@changeBranch)";
+            string sql;
+            if (editingType)
+            {
+                sql = "UPDATE CarTypes Set Description=@desc, RateDaily=@daily, RateWeekly=@weekly," +
+                    "RateMonthly=@monthly, ChangeBranchFee=@changeBranch " +
+                    "WHERE TypeID = @tid";
+            }
+            else
+            {
+                sql = "INSERT INTO CarTypes " +
+                   "(Description, RateDaily, RateWeekly, RateMonthly, ChangeBranchFee)" +
+                   "VALUES (@desc, @daily,@weekly,@monthly,@changeBranch)";
+            }
             var sqlcommand = new SqlCommand(sql, DBUtil.GetConnection());
             sqlcommand.Parameters.Add("@desc", SqlDbType.NVarChar).Value = desc;
             sqlcommand.Parameters.Add("@daily", SqlDbType.Decimal).Value = dailyRate;
@@ -124,11 +167,7 @@ namespace GrandRentAuto
             sqlcommand.Parameters.Add("@changeBranch", SqlDbType.Decimal).Value = changeBranchFee;
             sqlcommand.ExecuteNonQuery();
             MessageBox.Show("Car type " + desc + " added!");
-            textBox_typeDesc.Clear();
-            textBox_dailyRate.Clear();
-            textBox_weeklyRate.Clear();
-            textBox_monthlyRate.Clear();
-            textBox_changeFee.Clear();
+            CLearTypePanel();
             panel1.Visible = false;
             LoadTypeCombobox();
         }
@@ -213,31 +252,69 @@ namespace GrandRentAuto
             }
         }
 
-        private void listViewCars_MouseClick(object sender, MouseEventArgs e)
+        private void buttonEditCarType_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenu menu = new ContextMenu();
 
-                MenuItem edit = new MenuItem("Edit");
-                edit.Click += listViewCars_EditItem;
-                menu.MenuItems.Add(edit);
-                
-                MenuItem delete = new MenuItem("Delete");
-                edit.Click += listViewCars_DeleteItem;
-                menu.MenuItems.Add(delete);
-                menu.Show(listViewCars, new Point(e.X, e.Y));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (listView_types.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            int tid = int.Parse(listView_types.SelectedItems[0].SubItems[0].Text);
+            string desc = listViewCars.SelectedItems[0].SubItems[1].Text;
+            DialogResult result = MessageBox.Show($"Delete Car type {desc}?", "Confirm", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string sql = "DELETE FROM CarTypes WHERE TypeID=@tid";
+                using (SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
+                {
+                    cmd.Parameters.Add("@tid", SqlDbType.Int).Value = tid;
+                    cmd.ExecuteNonQuery();
+                    LoadCarListView();
+                }
             }
         }
 
-        private void listViewCars_DeleteItem(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (listViewCars.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            int cid = int.Parse(listViewCars.SelectedItems[0].SubItems[0].Text);
+            string plate = listViewCars.SelectedItems[0].SubItems[1].Text;
+            DialogResult result = MessageBox.Show($"Delete Car {plate}?", "Confirm", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string sql = "DELETE FROM Cars WHERE CarID=@cid";
+                using(SqlCommand cmd = new SqlCommand(sql, DBUtil.GetConnection()))
+                {
+                    cmd.Parameters.Add("@cid", SqlDbType.Int).Value = cid;
+                    cmd.ExecuteNonQuery();
+                    LoadCarListView();
+                }
+            }
         }
 
-        private void listViewCars_EditItem(object sender, EventArgs e)
+        private void buttonEditCar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (listViewCars.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            editingCar = true;
+            carId = int.Parse(listViewCars.SelectedItems[0].SubItems[0].Text);
+            textboxPlate.Text = listViewCars.SelectedItems[0].SubItems[1].Text;
+            comboBoxStoredAt.SelectedItem = listViewCars.SelectedItems[0].SubItems[2].Text;
+            comboBoxTypes.SelectedItem = listViewCars.SelectedItems[0].SubItems[3].Text;
+            textBoxMilage.Text = listViewCars.SelectedItems[0].SubItems[4].Text;
+            textBoxStatus.Text = listViewCars.SelectedItems[0].SubItems[5].Text;
+            panelAdd.Visible = true;
         }
+
     }
 }
