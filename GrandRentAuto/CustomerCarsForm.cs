@@ -31,7 +31,6 @@ namespace GrandRentAuto
                                         "WHERE StartDate BETWEEN @pickup AND @dropoff " +
                                         "OR ReturnDate BETWEEN @pickup AND @dropoff " +
                                         "OR (StartDate < @pickup AND ReturnDate > @dropoff)) ";
-
             if (radioMyCity.Checked)
             {
                 sql += " AND City = (SELECT City From Customers WHERE CustomerID = @customerID) ";

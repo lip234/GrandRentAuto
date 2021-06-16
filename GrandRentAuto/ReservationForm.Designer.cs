@@ -40,26 +40,29 @@ namespace GrandRentAuto
             this.branch1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.comboBoxTypes = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerSrart = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.plate1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.weekly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxBranches = new System.Windows.Forms.ComboBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.checkBoxShowCurrentBranch = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +83,7 @@ namespace GrandRentAuto
             this.button1.TabIndex = 4;
             this.button1.Text = "Confirm Pickup";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listViewEmployee
             // 
@@ -90,8 +94,10 @@ namespace GrandRentAuto
             this.start,
             this.returnDate,
             this.branch1});
+            this.listViewEmployee.FullRowSelect = true;
             this.listViewEmployee.HideSelection = false;
             this.listViewEmployee.Location = new System.Drawing.Point(63, 126);
+            this.listViewEmployee.MultiSelect = false;
             this.listViewEmployee.Name = "listViewEmployee";
             this.listViewEmployee.Size = new System.Drawing.Size(658, 744);
             this.listViewEmployee.TabIndex = 3;
@@ -145,16 +151,17 @@ namespace GrandRentAuto
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.comboBoxTypes);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dateTimePickerEnd);
+            this.panel1.Controls.Add(this.dateTimePickerSrart);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.listView1);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.comboBoxBranches);
+            this.panel1.Controls.Add(this.textBoxName);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -165,19 +172,28 @@ namespace GrandRentAuto
             this.panel1.TabIndex = 7;
             this.panel1.Visible = false;
             // 
-            // comboBox2
+            // button7
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.button7.Location = new System.Drawing.Point(64, 321);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(115, 31);
+            this.button7.TabIndex = 18;
+            this.button7.Text = "Show results";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // comboBoxTypes
+            // 
+            this.comboBoxTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTypes.FormattingEnabled = true;
+            this.comboBoxTypes.Items.AddRange(new object[] {
             "Any",
             "SUV",
             "Sedan"});
-            this.comboBox2.Location = new System.Drawing.Point(166, 276);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 28);
-            this.comboBox2.TabIndex = 17;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxTypes.Location = new System.Drawing.Point(166, 276);
+            this.comboBoxTypes.Name = "comboBoxTypes";
+            this.comboBoxTypes.Size = new System.Drawing.Size(200, 28);
+            this.comboBoxTypes.TabIndex = 17;
             // 
             // label6
             // 
@@ -189,23 +205,23 @@ namespace GrandRentAuto
             this.label6.Text = "Type";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker2
+            // dateTimePickerEnd
             // 
-            this.dateTimePicker2.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(166, 157);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker2.TabIndex = 15;
+            this.dateTimePickerEnd.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(166, 157);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePickerEnd.TabIndex = 15;
             // 
-            // dateTimePicker1
+            // dateTimePickerSrart
             // 
-            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(166, 95);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 14;
+            this.dateTimePickerSrart.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePickerSrart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerSrart.Location = new System.Drawing.Point(166, 95);
+            this.dateTimePickerSrart.Name = "dateTimePickerSrart";
+            this.dateTimePickerSrart.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePickerSrart.TabIndex = 14;
             // 
             // label4
             // 
@@ -218,14 +234,18 @@ namespace GrandRentAuto
             // 
             // listView1
             // 
+            this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.plate1,
+            this.ColumnHeader12,
             this.weekly,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(51, 389);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(396, 318);
             this.listView1.TabIndex = 12;
@@ -237,21 +257,25 @@ namespace GrandRentAuto
             this.plate1.Text = "Plate number";
             this.plate1.Width = 110;
             // 
+            // ColumnHeader12
+            // 
+            this.ColumnHeader12.Text = "Desc";
+            // 
             // weekly
             // 
-            this.weekly.DisplayIndex = 2;
+            this.weekly.DisplayIndex = 3;
             this.weekly.Text = "Weekly";
             this.weekly.Width = 70;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.DisplayIndex = 3;
+            this.columnHeader1.DisplayIndex = 4;
             this.columnHeader1.Text = "Monthly";
             this.columnHeader1.Width = 70;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.DisplayIndex = 1;
+            this.columnHeader2.DisplayIndex = 2;
             this.columnHeader2.Text = "Daily";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -278,26 +302,27 @@ namespace GrandRentAuto
             this.button5.TabIndex = 10;
             this.button5.Text = "Discard";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // comboBox1
+            // comboBoxBranches
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxBranches.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBranches.FormattingEnabled = true;
+            this.comboBoxBranches.Items.AddRange(new object[] {
             "Any",
             "Edmonton",
             "Calgary"});
-            this.comboBox1.Location = new System.Drawing.Point(166, 213);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 28);
-            this.comboBox1.TabIndex = 9;
+            this.comboBoxBranches.Location = new System.Drawing.Point(166, 213);
+            this.comboBoxBranches.Name = "comboBoxBranches";
+            this.comboBoxBranches.Size = new System.Drawing.Size(200, 28);
+            this.comboBoxBranches.TabIndex = 9;
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(166, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 26);
-            this.textBox1.TabIndex = 5;
+            this.textBoxName.Location = new System.Drawing.Point(166, 35);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(200, 26);
+            this.textBoxName.TabIndex = 5;
             // 
             // label5
             // 
@@ -345,12 +370,25 @@ namespace GrandRentAuto
             this.button6.TabIndex = 8;
             this.button6.Text = "Confirm Return";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // checkBoxShowCurrentBranch
+            // 
+            this.checkBoxShowCurrentBranch.AutoSize = true;
+            this.checkBoxShowCurrentBranch.Location = new System.Drawing.Point(63, 58);
+            this.checkBoxShowCurrentBranch.Name = "checkBoxShowCurrentBranch";
+            this.checkBoxShowCurrentBranch.Size = new System.Drawing.Size(222, 24);
+            this.checkBoxShowCurrentBranch.TabIndex = 9;
+            this.checkBoxShowCurrentBranch.Text = "Show Current Branch Only";
+            this.checkBoxShowCurrentBranch.UseVisualStyleBackColor = true;
+            this.checkBoxShowCurrentBranch.CheckedChanged += new System.EventHandler(this.checkBoxShowCurrentBranch_CheckedChanged);
             // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1381, 994);
+            this.Controls.Add(this.checkBoxShowCurrentBranch);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button3);
@@ -363,6 +401,7 @@ namespace GrandRentAuto
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -381,14 +420,14 @@ namespace GrandRentAuto
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxBranches;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerSrart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader plate1;
@@ -396,8 +435,11 @@ namespace GrandRentAuto
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxTypes;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.CheckBox checkBoxShowCurrentBranch;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ColumnHeader ColumnHeader12;
     }
 }

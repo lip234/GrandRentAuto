@@ -79,6 +79,7 @@ namespace GrandRentAuto
             this.listViewCustomer.TabIndex = 1;
             this.listViewCustomer.UseCompatibleStateImageBehavior = false;
             this.listViewCustomer.View = System.Windows.Forms.View.Details;
+            this.listViewCustomer.SelectedIndexChanged += new System.EventHandler(this.listViewCustomer_SelectedIndexChanged);
             // 
             // ID
             // 

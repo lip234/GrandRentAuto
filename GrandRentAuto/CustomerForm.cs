@@ -185,5 +185,10 @@ GROUP BY C.CustomerID, FirstName, LastName, City, Province ";
                 }
             }
         }
+
+        private void listViewCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
