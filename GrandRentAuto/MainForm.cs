@@ -12,28 +12,17 @@ using System.Data.SqlClient;
 
 namespace GrandRentAuto
 {
-    public partial class Main : Form
+    public partial class MainForm : Form
     {
-        private int employeeID { get; set; }
-        private string employeeName { get; set; }
-        private int branchId { get; set; }
-        private string branchName { get; set; }
+        public static  int employeeID { get; set; }
+        public static string employeeName { get; set; }
+        public static int branchId { get; set; }
+        public static string branchName { get; set; }
 
-
-        public Main()
+        public MainForm()
         {
             InitializeComponent();
         }
-        public Main(int employeeID, string employeeName, int branchID, string BranchName)
-        {
-            this.employeeID = employeeID;
-            this.employeeName = employeeName;
-            this.branchId = branchID;
-            this.branchName = branchName;
-
-            InitializeComponent();
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -73,7 +62,7 @@ namespace GrandRentAuto
 
         private void Main_Load(object sender, EventArgs e)
         {
-            label1.Text = "Logged in as " + this.employeeName + " at branch " + this.branchName;
+            label1.Text = "Logged in as " + employeeName + " at branch " + branchName;
         }
 
         private void buttonReport_Click(object sender, EventArgs e)

@@ -54,8 +54,12 @@ namespace GrandRentAuto
                             return;
                         }
                         reader.Read();
-                        Form form = new Main(reader.GetInt32(0),reader.GetString(1),reader.GetInt32(2), reader.GetString(3));
-                        form.ShowDialog();
+                        MainForm.employeeID = reader.GetInt32(0);
+                        MainForm.employeeName = reader.GetString(1);
+                        MainForm.branchId = reader.GetInt32(2);
+                        MainForm.branchName = reader.GetString(3);
+                        Form form = new MainForm();
+                        form.Show();
                         this.Hide();
                     }
                 }

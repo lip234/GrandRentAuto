@@ -18,8 +18,6 @@ namespace GrandRentAuto
             InitializeComponent();
         }
 
-
-
         private void LoadData()
         {
             string sql = @"SELECT Name,

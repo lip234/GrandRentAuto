@@ -39,18 +39,21 @@ namespace GrandRentAuto
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonDiscard = new System.Windows.Forms.Button();
+            this.comboBoxBranches = new System.Windows.Forms.ComboBox();
+            this.textBoxProvince = new System.Windows.Forms.TextBox();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.textBoxlName = new System.Windows.Forms.TextBox();
+            this.textBoxfName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxEdit = new System.Windows.Forms.CheckBox();
+            this.textBoxEID = new System.Windows.Forms.TextBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +69,7 @@ namespace GrandRentAuto
             this.listViewEmployee.FullRowSelect = true;
             this.listViewEmployee.HideSelection = false;
             this.listViewEmployee.Location = new System.Drawing.Point(88, 81);
+            this.listViewEmployee.MultiSelect = false;
             this.listViewEmployee.Name = "listViewEmployee";
             this.listViewEmployee.Size = new System.Drawing.Size(565, 812);
             this.listViewEmployee.TabIndex = 0;
@@ -108,11 +112,11 @@ namespace GrandRentAuto
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(401, 950);
+            this.button1.Location = new System.Drawing.Point(483, 950);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 44);
+            this.button1.Size = new System.Drawing.Size(170, 44);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
+            this.button1.Text = "&Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -120,20 +124,23 @@ namespace GrandRentAuto
             // 
             this.button2.Location = new System.Drawing.Point(88, 950);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(252, 44);
+            this.button2.Size = new System.Drawing.Size(170, 44);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Delete";
+            this.button2.Text = "&Delete";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxEID);
+            this.panel1.Controls.Add(this.checkBoxEdit);
+            this.panel1.Controls.Add(this.buttonSave);
+            this.panel1.Controls.Add(this.buttonDiscard);
+            this.panel1.Controls.Add(this.comboBoxBranches);
+            this.panel1.Controls.Add(this.textBoxProvince);
+            this.panel1.Controls.Add(this.textBoxCity);
+            this.panel1.Controls.Add(this.textBoxlName);
+            this.panel1.Controls.Add(this.textBoxfName);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -145,65 +152,65 @@ namespace GrandRentAuto
             this.panel1.TabIndex = 3;
             this.panel1.Visible = false;
             // 
-            // button4
+            // buttonSave
             // 
-            this.button4.Location = new System.Drawing.Point(208, 394);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 38);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonSave.Location = new System.Drawing.Point(208, 394);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(115, 38);
+            this.buttonSave.TabIndex = 11;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // buttonDiscard
             // 
-            this.button3.Location = new System.Drawing.Point(51, 394);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 38);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Discard";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonDiscard.Location = new System.Drawing.Point(51, 394);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(115, 38);
+            this.buttonDiscard.TabIndex = 10;
+            this.buttonDiscard.Text = "Discard";
+            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.Click += new System.EventHandler(this.button3_Click);
             // 
-            // comboBox1
+            // comboBoxBranches
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxBranches.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBranches.FormattingEnabled = true;
+            this.comboBoxBranches.Items.AddRange(new object[] {
             "Edmonton",
             "Calgary"});
-            this.comboBox1.Location = new System.Drawing.Point(166, 269);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(166, 28);
-            this.comboBox1.TabIndex = 9;
+            this.comboBoxBranches.Location = new System.Drawing.Point(166, 269);
+            this.comboBoxBranches.Name = "comboBoxBranches";
+            this.comboBoxBranches.Size = new System.Drawing.Size(166, 28);
+            this.comboBoxBranches.TabIndex = 9;
             // 
-            // textBox4
+            // textBoxProvince
             // 
-            this.textBox4.Location = new System.Drawing.Point(166, 210);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(166, 26);
-            this.textBox4.TabIndex = 8;
+            this.textBoxProvince.Location = new System.Drawing.Point(166, 210);
+            this.textBoxProvince.Name = "textBoxProvince";
+            this.textBoxProvince.Size = new System.Drawing.Size(166, 26);
+            this.textBoxProvince.TabIndex = 8;
             // 
-            // textBox3
+            // textBoxCity
             // 
-            this.textBox3.Location = new System.Drawing.Point(166, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(166, 26);
-            this.textBox3.TabIndex = 7;
+            this.textBoxCity.Location = new System.Drawing.Point(166, 157);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(166, 26);
+            this.textBoxCity.TabIndex = 7;
             // 
-            // textBox2
+            // textBoxlName
             // 
-            this.textBox2.Location = new System.Drawing.Point(166, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 26);
-            this.textBox2.TabIndex = 6;
+            this.textBoxlName.Location = new System.Drawing.Point(166, 100);
+            this.textBoxlName.Name = "textBoxlName";
+            this.textBoxlName.Size = new System.Drawing.Size(166, 26);
+            this.textBoxlName.TabIndex = 6;
             // 
-            // textBox1
+            // textBoxfName
             // 
-            this.textBox1.Location = new System.Drawing.Point(166, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 26);
-            this.textBox1.TabIndex = 5;
+            this.textBoxfName.Location = new System.Drawing.Point(166, 35);
+            this.textBoxfName.Name = "textBoxfName";
+            this.textBoxfName.Size = new System.Drawing.Size(166, 26);
+            this.textBoxfName.TabIndex = 5;
             // 
             // label5
             // 
@@ -253,11 +260,41 @@ namespace GrandRentAuto
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
+            // checkBoxEdit
+            // 
+            this.checkBoxEdit.AutoSize = true;
+            this.checkBoxEdit.Location = new System.Drawing.Point(51, 471);
+            this.checkBoxEdit.Name = "checkBoxEdit";
+            this.checkBoxEdit.Size = new System.Drawing.Size(63, 24);
+            this.checkBoxEdit.TabIndex = 12;
+            this.checkBoxEdit.Text = "Edit";
+            this.checkBoxEdit.UseVisualStyleBackColor = true;
+            this.checkBoxEdit.Visible = false;
+            // 
+            // textBoxEID
+            // 
+            this.textBoxEID.Location = new System.Drawing.Point(189, 471);
+            this.textBoxEID.Name = "textBoxEID";
+            this.textBoxEID.Size = new System.Drawing.Size(100, 26);
+            this.textBoxEID.TabIndex = 13;
+            this.textBoxEID.Visible = false;
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(285, 950);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(170, 44);
+            this.buttonEdit.TabIndex = 4;
+            this.buttonEdit.Text = "&Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 1127);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -283,17 +320,20 @@ namespace GrandRentAuto
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonDiscard;
+        private System.Windows.Forms.ComboBox comboBoxBranches;
+        private System.Windows.Forms.TextBox textBoxProvince;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.TextBox textBoxlName;
+        private System.Windows.Forms.TextBox textBoxfName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxEdit;
+        private System.Windows.Forms.TextBox textBoxEID;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }
