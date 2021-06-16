@@ -31,5 +31,15 @@ namespace GrandRentAuto
         {
             panel1.Visible = false;
         }
+
+        private void ReservationForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadData()
+        {
+
+        }
     }
 }

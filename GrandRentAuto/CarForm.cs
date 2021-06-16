@@ -254,7 +254,18 @@ namespace GrandRentAuto
 
         private void buttonEditCarType_Click(object sender, EventArgs e)
         {
-
+            if (listView_types.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            editingType = true;
+            typeID = int.Parse(listView_types.SelectedItems[0].SubItems[0].Text);
+            textBox_typeDesc.Text = listView_types.SelectedItems[0].SubItems[1].Text;
+            textBox_dailyRate.Text = listView_types.SelectedItems[0].SubItems[2].Text;
+            textBox_weeklyRate.Text = listViewCars.SelectedItems[0].SubItems[3].Text;
+            textBox_monthlyRate.Text = listViewCars.SelectedItems[0].SubItems[4].Text;
+            textBox_changeFee.Text = listViewCars.SelectedItems[0].SubItems[5].Text;
+            panel1.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)

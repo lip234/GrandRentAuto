@@ -91,9 +91,9 @@ namespace GrandRentAuto
             this.returnDate,
             this.branch1});
             this.listViewEmployee.HideSelection = false;
-            this.listViewEmployee.Location = new System.Drawing.Point(63, 58);
+            this.listViewEmployee.Location = new System.Drawing.Point(63, 126);
             this.listViewEmployee.Name = "listViewEmployee";
-            this.listViewEmployee.Size = new System.Drawing.Size(658, 812);
+            this.listViewEmployee.Size = new System.Drawing.Size(658, 744);
             this.listViewEmployee.TabIndex = 3;
             this.listViewEmployee.UseCompatibleStateImageBehavior = false;
             this.listViewEmployee.View = System.Windows.Forms.View.Details;
@@ -210,7 +210,7 @@ namespace GrandRentAuto
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(162, 324);
+            this.label4.Location = new System.Drawing.Point(162, 355);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 20);
             this.label4.TabIndex = 13;
@@ -225,9 +225,9 @@ namespace GrandRentAuto
             this.columnHeader2,
             this.columnHeader3});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(51, 347);
+            this.listView1.Location = new System.Drawing.Point(51, 389);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(396, 360);
+            this.listView1.Size = new System.Drawing.Size(396, 318);
             this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -359,6 +359,7 @@ namespace GrandRentAuto
             this.Controls.Add(this.listViewEmployee);
             this.Name = "ReservationForm";
             this.Text = "ReservationForm";
+            this.Load += new System.EventHandler(this.ReservationForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
